@@ -12,6 +12,6 @@
         </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="$USER_HOME$/Downloads" />
+    <option name="cloneParentDir" value="$USER_HOME$/Documents/CODE/IntelliJ Projects" />
   </component>
 </application>

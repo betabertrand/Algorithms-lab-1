@@ -20,13 +20,71 @@ public class LAB1 {
 	// TODO: document this method
 	public static int[] countingSort(int[] a) {
 		//TODO: implement this method
-		return null;
+		int max = a[0];
+
+		for (int i = 1; i < a.length; i++)
+			if (a[i] > max)
+				max = a[i];
+
+		int[] count = new int[max > a.length ? max + 1 : a.length + 1];
+		int[] sorted = new int[a.length];
+
+		for (int element = 0; element < a.length; element++)
+			count[a[element]]++;
+
+		for (int i = 0, j = 0; i < count.length; i++)
+		{
+			while (count[i] != 0)
+			{
+				sorted[j] = i;
+				count[i]--;
+				j++;
+
+			}
+		}
+
+		return sorted;
 	}
 
 	// TODO: document this method
 	public static int[] radixSort(int[] a) {
 		// TODO: implement this method
-		return null;
+
+		int max = a[0];
+		int num = 1;
+
+		int[] arr2 = new int[10];
+
+		for (int i = 1; i < a.length; i++)
+		{
+			if (a[i] > max)
+			{
+				max = a[i];
+			}
+		}
+		// System.out.println("hello");
+		// int d = String.valueOf(max).length();
+
+		while (max / num > 0) {
+
+			int[] arr = new int[10];
+
+			for (int i = 0; i < a.length; i++)
+				arr[((a[i] / num) % 10)]++;
+
+			for (int i = 1; i < arr.length; i++)
+				arr[i] += arr[i - 1];
+
+			for (int i = a.length - 1; i >= 0; i--)
+				arr2[--arr[(a[i] / num) % 10]] = a[i];
+
+			for (int i = 0; i < a.length; i++)
+				a[i] = arr2[i];
+
+			num *= 10;
+		}
+
+		return a;
 	}
 
 	/********************************************
